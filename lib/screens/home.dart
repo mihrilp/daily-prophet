@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> _fetchNews() async {
-    _items = await _service.fetcNews();
+    _items = await _service.fetcTopHeadlines();
     setState(() {
       _isLoading = false;
     });
