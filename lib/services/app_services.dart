@@ -29,4 +29,25 @@ class Service {
     }
     return null;
   }
+
+  Future<List<NewsModel>?> fetchNewsByKeyword(String keyword) async {
+    try {
+      final response = await _dio.get(
+          "everything?q=$keyword&apiKey=${dotenv.env['API_KEY']}",
+          queryParameters: {'page': 1});
+      if (response.statusCode == HttpStatus.ok) {
+        final data = response.data;
+        if (data['articles'] is List) {
+          return data['articles']
+              .map<NewsModel>((item) => NewsModel.fromJson(item))
+              .toList();
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error: $e");
+      }
+    }
+    return null;
+  }
 }

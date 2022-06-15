@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/news_model.dart';
-import '../widgets/search_bar.dart';
 import "../services/app_services.dart";
+import '../widgets/news_card.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,18 +14,30 @@ class _HomeState extends State<Home> {
   List<NewsModel>? _items;
   bool _isLoading = true;
   late final Service _service = Service();
+  late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
     _fetchNews();
+    _controller = TextEditingController();
+  }
+
+  void _changeLoading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
   }
 
   Future<void> _fetchNews() async {
     _items = await _service.fetcTopHeadlines();
-    setState(() {
-      _isLoading = false;
-    });
+    _changeLoading();
+  }
+
+  Future<void> handleSearch() async {
+    _changeLoading();
+    _items = await _service.fetchNewsByKeyword(_controller.text);
+    _changeLoading();
   }
 
   @override
@@ -40,15 +52,16 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SearchBar(),
+              _searchBar(),
               Expanded(
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator())
                     : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
                         itemCount: _items?.length ?? 0,
                         itemBuilder: (context, index) {
-                          return _PostCard(model: _items?[index]);
+                          return NewsCard(model: _items?[index]);
                         },
                       ),
               ),
@@ -56,26 +69,21 @@ class _HomeState extends State<Home> {
           ),
         )));
   }
-}
 
-class _PostCard extends StatelessWidget {
-  const _PostCard({
-    Key? key,
-    required NewsModel? model,
-  })  : _model = model,
-        super(key: key);
-
-  final NewsModel? _model;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 20),
-      child: ListTile(
-        onTap: () {},
-        title: Text(_model?.title ?? ''),
-        subtitle: Text(_model?.description ?? ''),
+  TextField _searchBar() {
+    return TextField(
+      controller: _controller,
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.search_outlined),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
+        ),
+        hintText: 'Search',
       ),
+      keyboardType: TextInputType.text,
+      onEditingComplete: () => handleSearch(),
     );
   }
 }
