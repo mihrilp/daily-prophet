@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../models/favorites_model.dart';
 import '../models/news_model.dart';
 import "../services/app_services.dart";
 import '../widgets/news_card.dart';
@@ -44,7 +42,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesList = context.watch<FavoritesModel>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Appcent News App'),
@@ -64,12 +61,7 @@ class _HomeState extends State<Home> {
                             horizontal: 10, vertical: 5),
                         itemCount: _items?.length ?? 0,
                         itemBuilder: (context, index) {
-                          return InkWell(
-                            child: NewsCard(model: _items?[index]),
-                            onTap: () {
-                              favoritesList.add(_items?[index]);
-                            },
-                          );
+                          return NewsCard(model: _items?[index]);
                         },
                       ),
               ),
