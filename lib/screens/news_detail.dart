@@ -58,7 +58,12 @@ class NewsDetail extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
               SizedBox(height: 30),
-              TextButton(onPressed: () {}, child: Text('View the News Source')),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'View the News Source',
+                    style: TextStyle(fontWeight: FontWeight.w600, height: 1.2),
+                  )),
             ]),
           )),
           BottomAppBar(

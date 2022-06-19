@@ -15,11 +15,13 @@ class NewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 25),
-      child: Card(
-          child: InkWell(
-        onTap: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => NewsDetail(news: _model!))),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: ListTile(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => NewsDetail(news: _model!))),
           leading: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
@@ -31,47 +33,10 @@ class NewsCard extends StatelessWidget {
               )),
           title: Text(
             _model?.title ?? '',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.w500, height: 1.2),
           ),
         ),
-      )),
+      ),
     );
   }
 }
-
-
-//  ListTile(
-//         onTap: () {},
-//         title: Text(_model?.title ?? ''),
-//         subtitle: Text(_model?.description ?? ''),
-//       ),
-
-// Padding(
-//         padding: const EdgeInsets.symmetric(vertical: 10),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             ClipRRect(
-//               borderRadius: BorderRadius.circular(10),
-//               child: Image.network(
-//                 _model?.urlToImage ??
-//                     'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-//                 fit: BoxFit.cover,
-//                 width: 100,
-//                 height: 100,
-//               ),
-//             ),
-//             Expanded(
-//                 child: Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               crossAxisAlignment: CrossAxisAlignment.center,
-//               children: [
-//                 Text(
-//                   _model?.title ?? '',
-//                   style: TextStyle(fontWeight: FontWeight.bold),
-//                 ),
-//               ],
-//             ))
-//           ],
-//         ),
-//       ),

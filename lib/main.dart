@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'News App',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData.light().copyWith(
+          theme: ThemeData(fontFamily: 'Rubik').copyWith(
               appBarTheme: const AppBarTheme(
                 centerTitle: true,
                 titleTextStyle: TextStyle(

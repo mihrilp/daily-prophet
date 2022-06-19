@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
         ),
         body: SizedBox(
             child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
