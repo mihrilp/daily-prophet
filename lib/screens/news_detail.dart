@@ -1,7 +1,9 @@
 import 'package:daily_prophet/models/news_model.dart';
+import 'package:daily_prophet/screens/news_source.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../models/favorites_model.dart';
 
 class NewsDetail extends StatelessWidget {
@@ -59,7 +61,11 @@ class NewsDetail extends StatelessWidget {
               ),
               SizedBox(height: 30),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              NewsSource(newsUrl: news.url!))),
                   child: Text(
                     'View the News Source',
                     style: TextStyle(fontWeight: FontWeight.w600, height: 1.2),
