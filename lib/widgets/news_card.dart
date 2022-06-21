@@ -18,6 +18,7 @@ class NewsCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
         child: ListTile(
+          contentPadding: EdgeInsets.zero,
           onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -25,12 +26,18 @@ class NewsCard extends StatelessWidget {
           leading: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                _model?.urlToImage ??
-                    'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-                fit: BoxFit.cover,
-                width: 100,
-                height: 100,
-              )),
+                  _model?.urlToImage ??
+                      'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
+                  fit: BoxFit.cover,
+                  width: 100, errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: Colors.amber,
+                  child: const Text(
+                    'Whoops!',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                );
+              })),
           title: Text(
             _model?.title ?? '',
             style: TextStyle(fontWeight: FontWeight.w500, height: 1.2),

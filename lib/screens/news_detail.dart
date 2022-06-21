@@ -1,9 +1,9 @@
 import 'package:daily_prophet/models/news_model.dart';
 import 'package:daily_prophet/screens/news_source.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import '../models/favorites_model.dart';
 
 class NewsDetail extends StatelessWidget {
@@ -37,19 +37,20 @@ class NewsDetail extends StatelessWidget {
             child: Column(children: [
               Text(
                 "${news.title}",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "${news.author}",
+                    news.author ?? 'Unknown',
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   ),
                   Text(
-                    "${news.publishedAt}",
+                    DateFormat.yMMMEd()
+                        .format(DateTime.parse(news.publishedAt!)),
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   ),
                 ],
@@ -57,7 +58,7 @@ class NewsDetail extends StatelessWidget {
               SizedBox(height: 30),
               Text(
                 "${news.content}",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 18, height: 1.4),
               ),
               SizedBox(height: 30),
               TextButton(
@@ -68,7 +69,7 @@ class NewsDetail extends StatelessWidget {
                               NewsSource(newsUrl: news.url!))),
                   child: Text(
                     'View the News Source',
-                    style: TextStyle(fontWeight: FontWeight.w600, height: 1.2),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   )),
             ]),
           )),
