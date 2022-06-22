@@ -14,16 +14,20 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Consumer<FavoritesModel>(
-      builder: (context, value, child) => value.items.isNotEmpty
-          ? ListView.builder(
-              itemCount: value.items.length,
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              itemBuilder: (context, index) =>
-                  NewsCard(model: value.items[index]))
-          : const Center(
-              child: Text('No favorites added.'),
-            ),
-    ));
+        appBar: AppBar(title: Text('My Favorites')),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Consumer<FavoritesModel>(
+            builder: (context, value, child) => value.items.isNotEmpty
+                ? ListView.builder(
+                    itemCount: value.items.length,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    itemBuilder: (context, index) =>
+                        NewsCard(model: value.items[index]))
+                : const Center(
+                    child: Text('No favorites added.'),
+                  ),
+          ),
+        ));
   }
 }

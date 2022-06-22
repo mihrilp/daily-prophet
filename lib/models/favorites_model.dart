@@ -15,4 +15,8 @@ class FavoritesModel extends ChangeNotifier {
     _favorites.remove(news);
     notifyListeners();
   }
+
+  contains(NewsModel news) {
+    return _favorites.contains(news);
+  }
 }

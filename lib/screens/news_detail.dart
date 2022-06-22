@@ -78,9 +78,13 @@ class NewsDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  icon: Icon(Icons.favorite_rounded),
+                  icon: favoritesList.contains(news)
+                      ? Icon(Icons.favorite)
+                      : Icon(Icons.favorite_outline),
                   onPressed: () {
-                    favoritesList.add(news);
+                    favoritesList.contains(news)
+                        ? favoritesList.remove(news)
+                        : favoritesList.add(news);
                   },
                 ),
                 IconButton(
@@ -97,48 +101,3 @@ class NewsDetail extends StatelessWidget {
     );
   }
 }
-
-// Expanded(child: Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: Column(children: [          Text(
-
-//   ),
-//   SizedBox(height: 20),
-//   Row(
-//     mainAxisAlignment: MainAxisAlignment.spaceAround,
-//     children: [
-//       Text(
-//         "${news.author}",
-//         style: TextStyle(fontSize: 15, color: Colors.grey),
-//       ),
-//       Text(
-//         "${news.publishedAt}",
-//         style: TextStyle(fontSize: 15, color: Colors.grey),
-//       ),
-//     ],
-//   ),
-//   SizedBox(height: 30),
-//   Expanded(
-//     child: Text(
-//       "${news.content}",
-//       style: TextStyle(fontSize: 15),
-//     ),]),))
-
-//   ),
-//   BottomAppBar(
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceAround,
-//       children: [
-//         IconButton(
-//           icon: Icon(Icons.favorite_rounded),
-//           onPressed: () {
-//             favoritesList.add(news);
-//           },
-//         ),
-//         IconButton(
-//           icon: Icon(Icons.share),
-//           onPressed: () {
-//             Share.share("${news.url}");
-//           },
-//         ),
-//       ],
-//     ),
-//   ),

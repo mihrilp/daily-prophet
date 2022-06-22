@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/news_model.dart';
 import "../services/app_services.dart";
 import '../widgets/news_card.dart';
@@ -44,8 +45,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Appcent News App'),
-        ),
+            title: SvgPicture.asset(
+          "assets/images/logo2.svg",
+          height: 50,
+        )),
         body: SizedBox(
             child: Padding(
           padding: EdgeInsets.all(20),

@@ -19,17 +19,20 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'News App',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(fontFamily: 'Rubik').copyWith(
-              appBarTheme: const AppBarTheme(
-                centerTitle: true,
-                titleTextStyle: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87),
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-              ),
-              tabBarTheme: const TabBarTheme(labelColor: Colors.black)),
+          theme: ThemeData(
+                  fontFamily: 'Rubik',
+                  scaffoldBackgroundColor: Color(0xfffff8ed))
+              .copyWith(
+                  appBarTheme: const AppBarTheme(
+                    centerTitle: true,
+                    titleTextStyle: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87),
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                  ),
+                  tabBarTheme: const TabBarTheme(labelColor: Colors.black)),
           home: const MyTabBar(),
         ));
   }

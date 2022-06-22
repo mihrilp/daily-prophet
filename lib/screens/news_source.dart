@@ -20,6 +20,6 @@ class _NewsSourceState extends State<NewsSource> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(initialUrl: widget.newsUrl);
+    return SafeArea(child: WebView(initialUrl: widget.newsUrl));
   }
 }
