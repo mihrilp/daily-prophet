@@ -43,10 +43,13 @@ class NewsDetail extends StatelessWidget {
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    news.author ?? 'Unknown',
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                  Flexible(
+                    child: Text(
+                      news.author ?? 'Unknown',
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
                   ),
                   Text(
                     DateFormat.yMMMEd()
@@ -67,10 +70,12 @@ class NewsDetail extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) =>
                               NewsSource(newsUrl: news.url!))),
-                  child: Text(
-                    'View the News Source',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                  )),
+                  child: Text('View the News Source',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xfffbb03b),
+                      ))),
             ]),
           )),
           BottomAppBar(

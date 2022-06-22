@@ -28,7 +28,7 @@ class NewsCard extends StatelessWidget {
               child: Image.network(
                   _model?.urlToImage ??
                       'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   width: 100, errorBuilder: (context, error, stackTrace) {
                 return Container(
                   color: Colors.amber,
@@ -41,6 +41,8 @@ class NewsCard extends StatelessWidget {
           title: Text(
             _model?.title ?? '',
             style: TextStyle(fontWeight: FontWeight.w500, height: 1.2),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ),

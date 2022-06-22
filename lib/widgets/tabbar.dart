@@ -24,7 +24,7 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
       length: 2,
       child: Scaffold(
         bottomNavigationBar:
-            SizedBox(height: 58, child: BottomAppBar(child: _tabbar())),
+            SizedBox(height: 65, child: BottomAppBar(child: _tabbar())),
         body: _tabbarView(),
       ),
     );
@@ -32,20 +32,22 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
 
   TabBar _tabbar() {
     return TabBar(
-        padding: EdgeInsets.zero,
-        indicatorColor: Colors.transparent,
-        labelStyle: TextStyle(fontSize: 14),
-        controller: _tabController,
-        tabs: [
-          Tab(
-            text: 'News',
-            icon: Icon(Icons.newspaper_outlined),
-          ),
-          Tab(
-            text: 'Favorites',
-            icon: Icon(Icons.favorite_border_outlined),
-          ),
-        ]);
+      padding: EdgeInsets.zero,
+      indicatorColor: Colors.transparent,
+      labelStyle: TextStyle(fontSize: 12),
+      controller: _tabController,
+      tabs: [
+        Tab(
+          text: 'News',
+          icon: Icon(Icons.newspaper_outlined),
+        ),
+        Tab(
+          text: 'Favorites',
+          icon: Icon(Icons.favorite_border_outlined),
+        ),
+      ],
+      unselectedLabelColor: Colors.grey,
+    );
   }
 
   TabBarView _tabbarView() {

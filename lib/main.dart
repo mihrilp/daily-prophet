@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
                   scaffoldBackgroundColor: Color(0xfffff8ed))
               .copyWith(
                   appBarTheme: const AppBarTheme(
-                    centerTitle: true,
                     titleTextStyle: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
@@ -32,7 +31,9 @@ class MyApp extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                   ),
-                  tabBarTheme: const TabBarTheme(labelColor: Colors.black)),
+                  tabBarTheme: const TabBarTheme(
+                      labelColor: Colors.black,
+                      labelPadding: EdgeInsets.all(2))),
           home: const MyTabBar(),
         ));
   }

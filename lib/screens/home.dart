@@ -44,49 +44,62 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: SvgPicture.asset(
+      appBar: AppBar(
+        title: SvgPicture.asset(
           "assets/images/logo2.svg",
-          height: 50,
-        )),
-        body: SizedBox(
-            child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _searchBar(),
-              Expanded(
-                child: _isLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        itemCount: _items?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          return NewsCard(model: _items?[index]);
-                        },
-                      ),
-              ),
-            ],
-          ),
-        )));
+          height: 45,
+        ),
+      ),
+      body: SizedBox(
+          child: Padding(
+        padding: EdgeInsets.all(25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text("News from all over the world",
+                  style: TextStyle(fontSize: 20, color: Colors.grey)),
+            ),
+            _searchBar(),
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: Text("Top Headlines",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
+            ),
+            Expanded(
+              child: _isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      itemCount: _items?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        return NewsCard(model: _items?[index]);
+                      },
+                    ),
+            ),
+          ],
+        ),
+      )),
+      extendBody: true,
+    );
   }
 
   TextField _searchBar() {
     return TextField(
-      controller: _controller,
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.search_outlined),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
+        controller: _controller,
+        decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search_outlined),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          hintText: 'Search',
         ),
-        hintText: 'Search',
-      ),
-      keyboardType: TextInputType.text,
-      onEditingComplete: () => handleSearch(),
-    );
+        keyboardType: TextInputType.text,
+        onEditingComplete: () => handleSearch());
   }
 }

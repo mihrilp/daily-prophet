@@ -14,7 +14,9 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('My Favorites')),
+        appBar: AppBar(
+            title: Text('My Favorites',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600))),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Consumer<FavoritesModel>(
