@@ -23,8 +23,10 @@ class _MyTabBarState extends State<MyTabBar> with TickerProviderStateMixin {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        bottomNavigationBar:
-            SizedBox(height: 65, child: BottomAppBar(child: _tabbar())),
+        bottomNavigationBar: BottomAppBar(
+          color: Color(0xfffff8ed),
+          child: _tabbar(),
+        ),
         body: _tabbarView(),
       ),
     );

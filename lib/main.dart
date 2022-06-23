@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
                   fontFamily: 'Rubik',
-                  scaffoldBackgroundColor: Color(0xfffff8ed))
+                  scaffoldBackgroundColor: Color(0xfffff8ed),
+                  canvasColor: Color(0xfffff8ed))
               .copyWith(
                   appBarTheme: const AppBarTheme(
                     titleTextStyle: TextStyle(

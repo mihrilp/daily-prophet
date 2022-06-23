@@ -32,7 +32,7 @@ class NewsDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-              child: Padding(
+              child: SingleChildScrollView(
             padding: EdgeInsets.all(20),
             child: Column(children: [
               Text(
@@ -63,7 +63,11 @@ class NewsDetail extends StatelessWidget {
                 "${news.content}",
                 style: TextStyle(fontSize: 18, height: 1.4),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 40),
+              Text(
+                "Source: ${news.source?.name}",
+                style: TextStyle(fontSize: 15, color: Colors.grey),
+              ),
               TextButton(
                   onPressed: () => Navigator.push(
                       context,

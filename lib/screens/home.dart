@@ -46,13 +46,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: SvgPicture.asset(
-          "assets/images/logo2.svg",
+          "assets/images/logo.svg",
           height: 45,
         ),
       ),
       body: SizedBox(
           child: Padding(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,

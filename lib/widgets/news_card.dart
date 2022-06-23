@@ -23,12 +23,25 @@ class NewsCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => NewsDetail(news: _model!))),
-          leading: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+          leading: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.8),
+                    spreadRadius: 3,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ],
+              ),
               child: Image.network(
                   _model?.urlToImage ??
                       'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                   width: 100, errorBuilder: (context, error, stackTrace) {
                 return Container(
                   color: Colors.amber,
